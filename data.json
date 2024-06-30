@@ -16,5 +16,17 @@
 		"name": "Jojos",
 		"author": "victoria martinez",
 		"status": "disponible"
+	},
+	{
+		"code": 4,
+		"name": "NANA",
+		"author": "victoria martinez",
+		"status": "disponible"
+	},
+	{
+		"code": 5,
+		"name": "pichichos el libro",
+		"author": "victoria martinez",
+		"status": "no-apto"
 	}
 ]

@@ -1,70 +1,45 @@
+
 import Factory from "../DAOS/factory.js";
 import axios from "axios";
 
-class ApiService{
-    constructor(){
+class ApiService {
+    constructor() {
         this.factory = Factory.factory();
     }
-    
-    createBook = async(book)=>{
-        try {
-            const data = await this.factory.booksService.createBook(book)
-            return data
-        } catch (error) {
-            return error
-        }
+
+    createBook = async (book) => {
+        return await this.factory.booksService.createBook(book);
     }
-    borrowBook = async(code)=>{
-        try {
-            const response = await axios.get('https://libros.deno.dev/premios');
-            let rentedBook;
-            if(response.data.premio){
-                this.deleteBook(code)
-                return 'Congratulations you ve won the prize and you get to keep the book!!!'
-            }else{
-                 rentedBook = await this.factory.booksService.borrowBook(code)
-            return rentedBook;
-            }
-            
-        } catch (error) {
-            return error
-        }
-    }
-    returnBook = async(code)=>{
-        try {
-            const data = await this.factory.booksService.returnBook(code)
-            return data
-        } catch (error) {
-            return error
+
+    borrowBook = async (code) => {
+        const response = await axios.get('https://libros.deno.dev/premios');
+        if (response.data.premio) {
+            await this.deleteBook(code);
+            return 'Congratulations you have won the prize and you get to keep the book!!!';
+        } else {
+            return await this.factory.booksService.borrowBook(code);
         }
     }
 
-    getBooks = async()=>{
-        try {
-            const data = await this.factory.booksService.getBooks()
-            return data
-        } catch (error) {
-            return error
-        }
+    returnBook = async (code) => {
+        return await this.factory.booksService.returnBook(code);
     }
 
-    getBooksByStatus = async(status)=>{
-        try {
-            const data = await this.factory.booksService.getBooksByStatus(status)
-            return data
-        } catch (error) {
-            return error
-        }
+    getBooks = async () => {
+        return await this.factory.booksService.getBooks();
     }
-    deleteBook = async(code)=>{
-        
-            const data = await this.factory.booksService.deleteBook(code)
-            return data
+
+    getBooksByStatus = async (status) => {
+        return await this.factory.booksService.getBooksByStatus(status);
     }
-    improperBook = async(code)=>{
-        
-        const data = await this.factory.booksService.improperBook(code)
-        return data
+
+    deleteBook = async (code) => {
+        return await this.factory.booksService.deleteBook(code);
+    }
+
+    improperBook = async (code) => {
+        return await this.factory.booksService.improperBook(code);
+    }
 }
-    }
-    export default ApiService
+
+export default ApiService;
