@@ -1,0 +1,20 @@
+[
+	{
+		"code": 1,
+		"name": "Michis el libro",
+		"author": "victoria martinez",
+		"status": "alquilado"
+	},
+	{
+		"code": 2,
+		"name": "pichichos el libro",
+		"author": "victoria martinez",
+		"status": "alquilado"
+	},
+	{
+		"code": 3,
+		"name": "Jojos",
+		"author": "victoria martinez",
+		"status": "disponible"
+	}
+]
